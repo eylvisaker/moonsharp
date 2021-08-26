@@ -17,7 +17,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\MoonSharp.Interpreter\_Projects\MoonSharp.Interpreter.netcore\MoonSharp.Interpreter.netcore.csproj" />
+    <ProjectReference Include="..\..\..\MoonSharp.Interpreter\MoonSharp.Interpreter.netcore.csproj" />
   </ItemGroup>
 
 </Project>

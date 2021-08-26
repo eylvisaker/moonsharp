@@ -6,7 +6,7 @@
     <AssemblyTitle>MoonSharp.Interpreter</AssemblyTitle>
     <VersionPrefix>2.0.0</VersionPrefix>
     <TargetFramework>netstandard1.6</TargetFramework>
-    <DefineConstants>$(DefineConstants);DOTNET_CORE;NETFX_CORE</DefineConstants>
+    <DefineConstants>TRACE;DOTNET_CORE;NETFX_CORE;HASDYNAMIC</DefineConstants>
     <AssemblyName>MoonSharp.Interpreter</AssemblyName>
     <PackageId>MoonSharp.Interpreter.netcore</PackageId>
     <NetStandardImplicitPackageVersion>1.6.0</NetStandardImplicitPackageVersion>
@@ -15,5 +15,23 @@
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="_Projects\**" />
+    <EmbeddedResource Remove="_Projects\**" />
+    <None Remove="_Projects\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Dynamic.Runtime" Version="4.3.0" />
+  </ItemGroup>
 
 </Project>
