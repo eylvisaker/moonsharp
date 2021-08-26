@@ -315,6 +315,21 @@ namespace MoonSharp.Interpreter.Tests.EndToEnd
 			{
 				return Framework.Do.IsInstanceOfType(type, obj);
 			}
+
+			public DynValue Index(ExecutionControlToken ecToken, Script script, object obj, DynValue index, bool isDirectIndexing)
+			{
+				return DynValue.NewNumber(index.Number * 4);
+			}
+
+			public bool SetIndex(ExecutionControlToken ecToken, Script script, object obj, DynValue index, DynValue value, bool isDirectIndexing)
+			{
+				throw new NotImplementedException();
+			}
+
+			public DynValue MetaIndex(ExecutionControlToken ecToken, Script script, object obj, string metaname)
+			{
+				return null;
+			}
 		}
 
 
@@ -333,6 +348,21 @@ namespace MoonSharp.Interpreter.Tests.EndToEnd
 			}
 
 			public DynValue MetaIndex(Script script, string metaname)
+			{
+				throw new NotImplementedException();
+			}
+
+			public DynValue Index(ExecutionControlToken ecToken, Script script, DynValue index, bool isDirectIndexing)
+			{
+				return DynValue.NewNumber(index.Number * 3);
+			}
+
+			public bool SetIndex(ExecutionControlToken ecToken, Script script, DynValue index, DynValue value, bool isDirectIndexing)
+			{
+				throw new NotImplementedException();
+			}
+
+			public DynValue MetaIndex(ExecutionControlToken ecToken, Script script, string metaname)
 			{
 				throw new NotImplementedException();
 			}
