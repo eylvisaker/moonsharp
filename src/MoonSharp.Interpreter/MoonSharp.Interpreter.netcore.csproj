@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <Description>http://www.moonsharp.org</Description>
@@ -9,7 +9,6 @@
     <DefineConstants>TRACE;DOTNET_CORE;NETFX_CORE;HASDYNAMIC</DefineConstants>
     <AssemblyName>MoonSharp.Interpreter</AssemblyName>
     <PackageId>MoonSharp.Interpreter.netcore</PackageId>
-    <NetStandardImplicitPackageVersion>1.6.0</NetStandardImplicitPackageVersion>
     <PackageTargetFallback>$(PackageTargetFallback);dnxcore50</PackageTargetFallback>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
