@@ -309,7 +309,14 @@ namespace MoonSharp.Interpreter.Interop.BasicDescriptors
 
 			if (m_Members.TryGetValue(indexName, out desc))
 			{
-				return desc.GetValue(script, obj);
+				try 
+				{
+					return desc.GetValue(script, obj);
+				}
+				catch (Exception e)
+				{
+					throw new ScriptRuntimeException(e, $"CLR member getter {obj.GetType().FullName}::{indexName} threw");
+				}
 			}
 
 			return null;

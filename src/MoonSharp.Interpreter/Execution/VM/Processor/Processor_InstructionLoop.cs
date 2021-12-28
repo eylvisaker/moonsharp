@@ -722,11 +722,10 @@ namespace MoonSharp.Interpreter.Execution.VM
 					Flags = flags,
 				});
 
-
-                var ret = fn.Callback.Invoke(new ScriptExecutionContext(ecToken, this, fn.Callback, sref), args, isMethodCall: thisCall);
-                m_ValueStack.RemoveLast(argsCount + 1);
+				var ret = fn.Callback.Invoke(new ScriptExecutionContext(ecToken, this, fn.Callback, sref), args, isMethodCall: thisCall);
+				m_ValueStack.RemoveLast(argsCount + 1);
 				m_ValueStack.Push(ret);
-
+					
 				m_ExecutionStack.Pop();
 
 				return Internal_CheckForTailRequests(ecToken, null, instructionPtr);
@@ -1250,10 +1249,17 @@ namespace MoonSharp.Interpreter.Execution.VM
 				{
 					UserData ud = obj.UserData;
 
-					if (!ud.Descriptor.SetIndex(ecToken, this.GetScript(), ud.Object, originalIdx, value, isNameIndex))
+					try
 					{
-						throw ScriptRuntimeException.UserDataMissingField(ud.Descriptor.Name, idx.String);
+						if (!ud.Descriptor.SetIndex(ecToken, this.GetScript(), ud.Object, originalIdx, value, isNameIndex))
+						{
+							throw ScriptRuntimeException.UserDataMissingField(ud.Descriptor.Name, idx.String);
+						}
 					}
+					catch(Exception e) when (!(e is ScriptRuntimeException))
+                    {
+						throw new ScriptRuntimeException(e, "UserData.SetIndex failed");
+                    }
 
 					return instructionPtr;
 				}

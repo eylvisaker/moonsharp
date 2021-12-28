@@ -16,16 +16,26 @@ namespace MoonSharp.Interpreter
 		/// <summary>
 		/// Initializes a new instance of the <see cref="ScriptRuntimeException"/> class.
 		/// </summary>
-		/// <param name="ex">The ex.</param>
+		/// <param name="ex">The inner exception.</param>
 		public ScriptRuntimeException(Exception ex)
 			: base(ex)
 		{
-		}       
+		}
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="ScriptRuntimeException"/> class.
 		/// </summary>
-		/// <param name="ex">The ex.</param>
+		/// <param name="ex">The inner exception.</param>
+		/// <param name="message">The message.</param>
+		public ScriptRuntimeException(Exception ex, string message)
+			:base(ex, message)
+        {
+        }
+
+		/// <summary>
+		/// Initializes a new instance of the <see cref="ScriptRuntimeException"/> class.
+		/// </summary>
+		/// <param name="ex">The inner exception.</param>
 		public ScriptRuntimeException(ScriptRuntimeException ex)
 			: base(ex, ex.DecoratedMessage)
 		{

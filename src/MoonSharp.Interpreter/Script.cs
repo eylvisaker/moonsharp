@@ -366,7 +366,7 @@ namespace MoonSharp.Interpreter
         /// <summary>
         /// Loads and executes a string containing a Lua/MoonSharp script.
         /// </summary>
-        /// <param name="code">The code.</param>
+        /// <param name="code">The code. If nil is passed in, DynValue.Nil will be returned.</param>
         /// <param name="globalContext">The global context.</param>
         /// <param name="codeFriendlyName">Name of the code - used to report errors, etc. Also used by debuggers to locate the original source file.</param>
         /// <returns>
@@ -374,6 +374,9 @@ namespace MoonSharp.Interpreter
         /// </returns>
         public DynValue DoString(string code, Table globalContext = null, string codeFriendlyName = null)
         {
+            if (code == null)
+                return DynValue.Nil;
+
             DynValue func = LoadString(code, globalContext, codeFriendlyName);
             return Call(func);
         }
